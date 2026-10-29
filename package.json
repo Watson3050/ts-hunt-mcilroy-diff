@@ -1,0 +1,17 @@
+{
+  "name": "ts-hunt-mcilroy-diff",
+  "version": "0.1.0",
+  "description": "Compares two text files and identifies which lines were added, removed, or kept unchanged.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {}
+}
