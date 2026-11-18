@@ -18,3 +18,10 @@ The library exists to provide a dependency-free, predictable line diff. The trad
 The `diff` function returns an array of `{ type, line, oldLine, newLine }` objects where `type` is `'common'`, `'delete'`, or `'insert'`. The `oldLine` and `newLine` fields are 1-based line numbers, or `-1` when the op does not touch that document. Concatenating the `line` fields of all non-`insert` ops reconstructs the old text; all non-`delete` ops reconstruct the new text.
 
 The awkward edge: a trailing newline on the input does not create a phantom empty final line. `"a\n"` is treated as one line (`["a"]`), matching how most editors count lines. If your document genuinely ends with a blank line, represent it as `"a\n\n"`.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
